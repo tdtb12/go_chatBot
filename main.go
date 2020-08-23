@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"chatBot/router"
+	"log"
+)
+
+func init() {
+	log.SetFlags(log.Ldate | log.Lshortfile)
+}
 
 func main() {
-	fmt.Printf("Hello World")
+	log.Println("main start")
+	router.Listen()
+	log.Println("main end")
 }
