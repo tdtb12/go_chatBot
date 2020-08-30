@@ -1,6 +1,7 @@
 package main
 
 import (
+	"chatBot/constants"
 	"chatBot/router"
 	"log"
 )
@@ -10,7 +11,9 @@ func init() {
 }
 
 func main() {
-	log.Println("main start")
+	log.Println("main " + constants.APIStart)
+
 	router.Listen()
-	log.Println("main end")
+
+	log.Println("main " + constants.APIEnd)
 }

@@ -13,7 +13,7 @@ func main() {
 
 func Listen() {
 	router := mux.NewRouter()
-	router.HandleFunc("/", controller.RootController)
+	router.HandleFunc("/", controller.RootController).Methods("POST")
 
 	http.Handle("/", router)
 	http.ListenAndServe(":8080", router)
