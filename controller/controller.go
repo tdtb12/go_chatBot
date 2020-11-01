@@ -33,7 +33,7 @@ type Source struct {
 }
 
 type Message struct {
-	Id   string `json:"id"`
+	ID   string `json:"id"`
 	Type string `json:"type"`
 	Text string `json:"text"`
 }
@@ -46,8 +46,7 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Fatal(err)
-	}
-	fmt.Printf("header %s\n", header)
+	}	
 
 	r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 	decoder := json.NewDecoder(r.Body)
@@ -58,7 +57,6 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 		// log error and return 400 to caller
 		log.Fatal(err)
 	}
-	fmt.Println(r.Body["destination"])
 
 	decoded, err := base64.StdEncoding.DecodeString(header)
 	if err != nil {

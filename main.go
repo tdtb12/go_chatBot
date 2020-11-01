@@ -3,6 +3,7 @@ package main
 import (
 	"chatBot/constants"
 	"chatBot/router"
+	"chatBot/utilities"
 	"log"
 )
 
@@ -14,6 +15,7 @@ func main() {
 	log.Println("main " + constants.APIStart)
 
 	router.Listen()
+	utilities.ConnectMongo()
 
 	log.Println("main " + constants.APIEnd)
 }
