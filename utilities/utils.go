@@ -4,6 +4,7 @@ import (
 	"chatBot/constants"
 	"context"
 	"fmt"
+	"log"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -11,8 +12,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// ConnectMongo 123
 func ConnectMongo() {
-	fmt.Println("connectMongo")
+	log.Println(constants.CONNECT_MONGO + constants.APIStart)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
@@ -31,4 +33,5 @@ func ConnectMongo() {
 	}
 	id := res.InsertedID
 	fmt.Println(id)
+	log.Println(constants.CONNECT_MONGO + constants.APIEnd)
 }

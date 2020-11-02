@@ -46,7 +46,7 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Fatal(err)
-	}	
+	}
 
 	r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 	decoder := json.NewDecoder(r.Body)
