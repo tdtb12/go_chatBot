@@ -1,17 +1,18 @@
-package utilities
+package util
 
 import (
-	"chatBot/constants"
 	"context"
 	"fmt"
+	"log"
 	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func ConnectMongo() {
+// GetMongoConnection get the connection to mongoDB
+// @return *mongo.Client
+func GetMongoConnection() *mongo.Client {
 	fmt.Println("connectMongo")
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
@@ -23,12 +24,11 @@ func ConnectMongo() {
 		}
 	}()
 
-	collection := client.Database(constants.DATABASE_BOT).Collection(constants.COLLECTION_LOG)
+	// collection := client.Database(constants.DATABASE_BOT).Collection(constants.COLLECTION_LOG)
 
-	res, err := collection.InsertOne(context.Background(), bson.M{"hello": "world"})
 	if err != nil {
-		fmt.Println("error la")
+		log.Fatal("GetMongoConnection", err)
 	}
-	id := res.InsertedID
-	fmt.Println(id)
+
+	return client
 }
