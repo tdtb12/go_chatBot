@@ -50,7 +50,6 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 
 	r.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 	decoder := json.NewDecoder(r.Body)
-	fmt.Println(r.Body)
 	var req RequestBody
 	err = decoder.Decode(&req)
 	if err != nil {
@@ -67,6 +66,9 @@ func RootController(w http.ResponseWriter, r *http.Request) {
 
 	if hmac.Equal(hash.Sum(nil), decoded) {
 		fmt.Println("equal")
+		fmt.Println(ioutil.NopCloser(bytes.NewBuffer(body)))
+		bodyString := string(body)
+		fmt.Println(bodyString)
 	} else {
 		log.Fatal("not equal")
 	}
