@@ -1,5 +1,6 @@
 # **LINE預定機器人**
-進行中 請切到develop分支看進度 謝謝
+進行中...
+請切到develop分支看進度 謝謝
 LINE聊天室傳送預定時間、預訂服務，機器人自動回覆預約是否成功
 
 使用golang、mongoDB、docker
